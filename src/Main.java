@@ -23,7 +23,11 @@ public class Main {
             predictions[i] = sc.nextInt();
         });
 
-        double result = IntStream.range(0, N).mapToDouble(x -> Math.pow(results[x] - predictions[x], 2)).sum() / N;
-        System.out.println("Result: " + result);
+        System.out.println("Result: " + getMeanSquaredError(results, predictions));
+    }
+
+    public static double getMeanSquaredError(int[] results, int[] predictions) {
+        int  N = results.length;
+        return IntStream.range(0, N).mapToDouble(x -> Math.pow(results[x] - predictions[x], 2)).sum() / N;
     }
 }
